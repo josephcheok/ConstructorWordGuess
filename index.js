@@ -2,34 +2,7 @@ var Word = require("./word");
 var inquirer = require("inquirer");
 var guess = true;
 var keystroke = " ";
-var letters = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z"
-];
+var letters = /^[A-Za-z]+$/;
 
 var numGuesses = 9;
 
@@ -57,7 +30,7 @@ function repeat() {
         name: "keystroke",
         message: "Guess a letter!",
         validate: function(value) {
-          if (letters.indexOf(value) !== -1) {
+          if (value.match(letters)) {
             return true;
           }
           return false;
