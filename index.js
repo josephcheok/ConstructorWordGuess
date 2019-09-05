@@ -1,6 +1,7 @@
 var Word = require("./word");
 var inquirer = require("inquirer");
-var guess = true;
+var colors = require("colors");
+var guess = false;
 var keystroke = " ";
 var letters = /^[A-Za-z]+$/;
 
@@ -18,7 +19,6 @@ var wordsList = [
 //Randomly selects a word and uses the Word constructor to store it
 var randomWord = wordsList[Math.floor(Math.random() * wordsList.length)];
 var guessWord = new Word(randomWord, keystroke);
-console.log(guessWord);
 
 function repeat() {
   // console.log(guessWord.join(""));
@@ -39,6 +39,14 @@ function repeat() {
     ])
     .then(function(answer) {
       guessWord.createLetterObjects(answer.keystroke);
+      if (guess === true) {
+        console.log("CORRECT!!!".green);
+        guess === false;
+      } else {
+        console.log("INCORRECT!!!".red);
+        numGuesses--;
+        console.log("Guesses Remaining: " + numGuesses);
+      }
       repeat();
       // if (Letter.letterGuessed === false) {
       //   numGuesses--;

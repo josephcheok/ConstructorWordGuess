@@ -18,8 +18,10 @@ Letter.prototype.toString = function(letterInChosenWord) {
 //A function that takes a character as an argument and checks it against the underlying character,
 // updating the stored boolean value to true if it was guessed correctly
 Letter.prototype.letterCheck = function(keystroke) {
-  if (this.letterInChosenWord === keystroke) {
+  var letterCompare = this.letterInChosenWord.toLowerCase();
+  if (letterCompare === keystroke) {
     this.letterGuessed = true;
+    guess = true;
   }
 };
 
