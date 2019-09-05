@@ -1,3 +1,5 @@
+var placeholderArray = [];
+
 var Letter = function(letterInChosenWord) {
   this.letterInChosenWord = letterInChosenWord; //A string value to store the underlying character for the letter
   this.letterGuessed = false; //A boolean value that stores whether that letter has been guessed yet
@@ -12,7 +14,7 @@ Letter.prototype.toString = function(letterInChosenWord) {
   } else {
     placeholder = letterInChosenWord;
   }
-  console.log(placeholder);
+  return placeholder;
 };
 
 //A function that takes a character as an argument and checks it against the underlying character,

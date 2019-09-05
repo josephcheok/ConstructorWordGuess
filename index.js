@@ -22,7 +22,8 @@ var guessWord = new Word(randomWord, keystroke);
 
 function repeat() {
   // console.log(guessWord.join(""));
-
+  console.log(guessWord.placeholderArray.join(" "));
+  guessWord.placeholderArray = [];
   inquirer
     .prompt([
       {

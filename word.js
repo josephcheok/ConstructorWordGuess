@@ -4,6 +4,7 @@ var Letter = require("./letter");
 var Word = function(chosenWord, keystroke) {
   this.lettersInChosenWord = chosenWord.split("");
   this.letterArray = [];
+  this.placeholderArray = [];
   this.createLetterObjects = function(keystroke) {
     for (i = 0; i < this.lettersInChosenWord.length; i++) {
       this.letterArray.push(new Letter(this.lettersInChosenWord[i])); //An array of new Letter objects representing the letters of the underlying word//
@@ -13,10 +14,13 @@ var Word = function(chosenWord, keystroke) {
       //A function that returns a string representing the word. This should call the function on each
       //letter object (the first function defined in Letter.js) that displays the character or an underscore
       // and concatenate those together.
-      this.letterArray[i].toString(this.lettersInChosenWord[i]);
+      this.placeholderArray.push(
+        this.letterArray[i].toString(this.lettersInChosenWord[i])
+      );
     }
   };
   this.createLetterObjects(keystroke);
+  this.guessRound = false;
 };
 
 module.exports = Word;
