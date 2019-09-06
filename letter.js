@@ -22,7 +22,9 @@ Letter.prototype.letterCheck = function(keystroke) {
   var letterCompare = this.letterInChosenWord.toLowerCase();
   if (letterCompare === keystroke) {
     this.letterGuessed = true;
-    this.stateChange = true;
+    if (keystroke !== " ") {
+      this.stateChange = true;
+    }
   }
 };
 
