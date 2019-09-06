@@ -1,8 +1,7 @@
-var placeholderArray = [];
-
 var Letter = function(letterInChosenWord) {
   this.letterInChosenWord = letterInChosenWord; //A string value to store the underlying character for the letter
   this.letterGuessed = false; //A boolean value that stores whether that letter has been guessed yet
+  this.stateChange = false;
 };
 
 //A function that returns the underlying character if the letter has been guessed, or a placeholder
@@ -23,7 +22,7 @@ Letter.prototype.letterCheck = function(keystroke) {
   var letterCompare = this.letterInChosenWord.toLowerCase();
   if (letterCompare === keystroke) {
     this.letterGuessed = true;
-    guess = true;
+    this.stateChange = true;
   }
 };
 

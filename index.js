@@ -1,7 +1,6 @@
 var Word = require("./word");
 var inquirer = require("inquirer");
 var colors = require("colors");
-var guess = false;
 var keystroke = " ";
 var letters = /^[A-Za-z]+$/;
 
@@ -23,6 +22,8 @@ var guessWord = new Word(randomWord, keystroke);
 function repeat() {
   // console.log(guessWord.join(""));
   console.log(guessWord.placeholderArray.join(" "));
+  console.log(guessWord.letterArray);
+  console.log(guessWord.guessCorrect);
   guessWord.placeholderArray = [];
   inquirer
     .prompt([
@@ -39,10 +40,11 @@ function repeat() {
       }
     ])
     .then(function(answer) {
-      guessWord.createLetterObjects(answer.keystroke);
-      if (guess === true) {
+      guessWord.checkLetterObjects(answer.keystroke);
+      if (guessWord.guessCorrect === true) {
         console.log("CORRECT!!!".green);
-        guess === false;
+        console.log("GuessCorrect :" + guessWord.guessCorrect);
+        guessWord.guessCorrect = false;
       } else {
         console.log("INCORRECT!!!".red);
         numGuesses--;
