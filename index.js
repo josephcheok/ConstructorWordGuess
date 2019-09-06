@@ -35,9 +35,11 @@ function gameRound() {
       }
     }
     if (win === true) {
+      console.log(guessWord.placeholderArray.join(" "));
       console.log("You got it right. Next word!".yellow);
     }
     if (numGuesses === 0) {
+      console.log(guessWord.lettersInChosenWord.join(" "));
       lose = true;
       console.log("You lost. Try the next one!".magenta);
     }
